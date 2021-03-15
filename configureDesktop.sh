@@ -130,7 +130,7 @@ sudo apt-get install kazam
 # -------------------------------------------------------------------
 # KAZAM - Gravador de vídeo / tela / desktop
 # -------------------------------------------------------------------
-wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+wget -O ./discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 sudo apt install ./discord.deb
 
 # -------------------------------------------------------------------
