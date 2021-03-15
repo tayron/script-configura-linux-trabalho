@@ -9,6 +9,9 @@ export PATH=$PATH:/usr/local/go/bin
 rm $GOLANG_FILE
 sudo apt-get install upx
 
-mkdir ~/go && mkdir ~/go/src && mkdir ~/go/src/github.com && mkdir ~/go/src/github.com/$USUARIO_GITHUB
+sudo mkdir ~/go 
+sudo mkdir ~/go/src 
+sudo mkdir ~/go/src/github.com 
+sudo mkdir ~/go/src/github.com/$USUARIO_GITHUB
 
 go version
