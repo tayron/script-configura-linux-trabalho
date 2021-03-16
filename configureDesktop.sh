@@ -53,19 +53,19 @@ echo " -------------------------------------------------------------------"
 sudo apt-get install gimp
 
 echo " -------------------------------------------------------------------"
-echo " Git"
+echo " GIT"
 echo " -------------------------------------------------------------------"
 sudo apt install git
 git config --global user.email $GIT_EMAIL
 git config --global user.name $GIT_NOME
 
 echo " -------------------------------------------------------------------"
-echo " NodeJS"
+echo " NODEJS"
 echo " -------------------------------------------------------------------"
 sudo apt install nodejs
 
 echo " -------------------------------------------------------------------"
-echo " Atualizando NodeJS para última versão"
+echo " ATUALIZANDO NODEJS PARA ÚLTIMA VERSÃO"
 echo " -------------------------------------------------------------------"
 sudo npm cache clean -f
 sudo npm install -g n
@@ -76,27 +76,27 @@ echo " -------------------------------------------------------------------"
 sudo apt install npm
 
 echo " -------------------------------------------------------------------"
-echo " Yarn"
+echo " YARN"
 echo " -------------------------------------------------------------------"
 sudo npm install -g yarn
 
 echo " -------------------------------------------------------------------"
-echo " Eslint"
+echo " ESLINT"
 echo " -------------------------------------------------------------------"
 sudo npm install -g eslint
 
 echo " -------------------------------------------------------------------"
-echo " Serverless framework"
+echo " SERVERLESS FRAMEWORK"
 echo " -------------------------------------------------------------------"
 sudo npm install -g serverless
 
 echo " -------------------------------------------------------------------"
-echo " AWS Client"
+echo " AWS CLIENT"
 echo " -------------------------------------------------------------------"
 sudo apt-get install awscli
 
 echo " -------------------------------------------------------------------"
-echo " Docker and Docker-compose"
+echo " DOCKER E DOCKER-COMPOSE"
 echo " -------------------------------------------------------------------"
 sudo apt-get install docker.io
 sudo apt-get install docker-compose
@@ -131,13 +131,13 @@ echo " -------------------------------------------------------------------"
 sudo apt-get install kazam
 
 echo " -------------------------------------------------------------------"
-echo " Discord"
+echo " DISCORD"
 echo " -------------------------------------------------------------------"
 wget -O ./discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
 sudo apt install ./discord.deb
 
 echo " -------------------------------------------------------------------"
-echo " Postman"
+echo " POSTMAN"
 echo " -------------------------------------------------------------------"
 wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
 sudo tar -xzf postman.tar.gz -C /opt
@@ -160,16 +160,16 @@ EOL
 exit
 
 echo " -------------------------------------------------------------------"
-echo " Insomnia"
+echo " INSOMNIA"
 echo " -------------------------------------------------------------------"
 # Add to sources
-#echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-#    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
+    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 
 # Add public key used to verify code signature
-#wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-#    | sudo apt-key add -
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
+    | sudo apt-key add -
 
 # Refresh repository sources and install Insomnia
-#sudo apt-get update
-#sudo apt-get install insomnia
+sudo apt-get update
+sudo apt-get install insomnia
