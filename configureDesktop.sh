@@ -1,24 +1,24 @@
 #!/bin/bash
 
-GIT_NOME = "Tayron Miranda"
-GIT_EMAIL = "contato@tayron.com.br"
+nomeCadastroGithub="Tayron Miranda"
+usuarioGithub="tayron"
+emailGithub="contato@tayron.com.br"
 
 echo "# -------------------------------------------------------------------"
 echo "# ATUALIZANDO SISTEMA"
 echo "# -------------------------------------------------------------------"
-sudo apt update
-sudo apt-get upgrade
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
 echo " -------------------------------------------------------------------"
 echo " ATUALIZANDO PACOTES DO SISTEMA"
 echo " -------------------------------------------------------------------"
-sudo apt update
-sudo apt install software-properties-common apt-transport-https wget
+sudo apt install -y software-properties-common apt-transport-https wget
 
 echo " -------------------------------------------------------------------"
-echo " REMOVENDO FIREFOX"
+echo " INSTALANDO VLC"
 echo " -------------------------------------------------------------------"
-sudo apt-get purge firefox
+sudo apt-get install -y vlc
 
 echo " -------------------------------------------------------------------"
 echo " CHROME"
@@ -30,50 +30,70 @@ rm google-chrome-stable_current_amd64.deb
 echo " -------------------------------------------------------------------"
 echo " VIM"
 echo " -------------------------------------------------------------------"
-sudo apt-get install vim
+sudo apt-get install -y vim
+
+echo " -------------------------------------------------------------------"
+echo " LINSSID"
+echo " -------------------------------------------------------------------"
+sudo apt-get install -y linssid
+
+echo " -------------------------------------------------------------------"
+echo " CURL"
+echo " -------------------------------------------------------------------"
+sudo apt install -y curl
+
+echo " -------------------------------------------------------------------"
+echo " GOLANG"
+echo " -------------------------------------------------------------------"
+sudo apt-get install -y golang
 
 echo " -------------------------------------------------------------------"
 echo " GEDIT"
 echo " -------------------------------------------------------------------"
-sudo apt-get install gedit
+sudo apt-get install -y gedit
 
 echo " -------------------------------------------------------------------"
 echo " FILEZILLA"
 echo " -------------------------------------------------------------------"
-sudo apt-get install filezilla
+sudo apt-get install -y filezilla
 
 echo " -------------------------------------------------------------------"
 echo " INKSCAPE"
 echo " -------------------------------------------------------------------"
-sudo apt-get install inkscape
+sudo apt-get install -y inkscape
 
 echo " -------------------------------------------------------------------"
 echo " GIMP"
 echo " -------------------------------------------------------------------"
-sudo apt-get install gimp
+sudo apt-get install -y gimp
 
 echo " -------------------------------------------------------------------"
 echo " GIT"
 echo " -------------------------------------------------------------------"
-sudo apt install git
-git config --global user.email $GIT_EMAIL
-git config --global user.name $GIT_NOME
-
-echo " -------------------------------------------------------------------"
-echo " NODEJS"
-echo " -------------------------------------------------------------------"
-sudo apt install nodejs
-
-echo " -------------------------------------------------------------------"
-echo " ATUALIZANDO NODEJS PARA ÚLTIMA VERSÃO"
-echo " -------------------------------------------------------------------"
-sudo npm cache clean -f
-sudo npm install -g n
+sudo apt install -y git
+git config --global user.email "$emailGithub"
+git config --global user.name "$usuarioGithub"
 
 echo " -------------------------------------------------------------------"
 echo " NPM"
 echo " -------------------------------------------------------------------"
-sudo apt install npm
+sudo apt install -y npm
+
+echo " -------------------------------------------------------------------"
+echo " NVM"
+echo " -------------------------------------------------------------------"
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+echo " -------------------------------------------------------------------"
+echo " RECARREGANDO VARIAVEIS DE AMBIENTE"
+echo " -------------------------------------------------------------------"
+source ~/.profile
+
+echo " -------------------------------------------------------------------"
+echo " INSTALANDO NODE V14.16.0"
+echo " -------------------------------------------------------------------"
+nvm install v14.16.1
+
 
 echo " -------------------------------------------------------------------"
 echo " YARN"
@@ -98,8 +118,8 @@ sudo apt-get install awscli
 echo " -------------------------------------------------------------------"
 echo " DOCKER E DOCKER-COMPOSE"
 echo " -------------------------------------------------------------------"
-sudo apt-get install docker.io
-sudo apt-get install docker-compose
+sudo apt-get install -y docker.io
+sudo apt-get install -y docker-compose
 sudo usermod -aG docker ${USER}
 su - ${USER}
 
@@ -116,25 +136,26 @@ echo " -------------------------------------------------------------------"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
 sudo apt update
-sudo apt install code
+sudo apt install -y code
 
 echo " -------------------------------------------------------------------"
 echo " TEAM VIEWER"
 echo " -------------------------------------------------------------------"
 wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo apt install ./teamviewer_amd64.deb
+sudo apt-get install -y ./teamviewer_amd64.deb
 sudo rm teamviewer_amd64.deb
 
 echo " -------------------------------------------------------------------"
 echo " KAZAM - Gravador de vídeo / tela / desktop"
 echo " -------------------------------------------------------------------"
-sudo apt-get install kazam
+sudo apt-get install -y kazam
 
 echo " -------------------------------------------------------------------"
 echo " DISCORD"
 echo " -------------------------------------------------------------------"
 wget -O ./discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
-sudo apt install ./discord.deb
+sudo apt-get install -y ./discord.deb
+sudo rm discord.deb
 
 echo " -------------------------------------------------------------------"
 echo " POSTMAN"
@@ -144,32 +165,6 @@ sudo tar -xzf postman.tar.gz -C /opt
 sudo ln -s /opt/Postman/Postman /usr/bin/postman
 sudo rm postman.tar.gz
 
-sudo su
-
-cat > /usr/share/applications/postman.desktop <<EOL
-[Desktop Entry]
-Encoding=UTF-8
-Name=Postman
-Exec=postman
-Icon=/opt/Postman/app/resources/app/assets/icon.png
-Terminal=false
-Type=Application
-Categories=Development;
-EOL
-
-exit
-
 echo " -------------------------------------------------------------------"
-echo " INSOMNIA"
+echo " FIM DAS CONFIGURAÇÕES"
 echo " -------------------------------------------------------------------"
-# Add to sources
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
-
-# Add public key used to verify code signature
-wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-    | sudo apt-key add -
-
-# Refresh repository sources and install Insomnia
-sudo apt-get update
-sudo apt-get install insomnia
