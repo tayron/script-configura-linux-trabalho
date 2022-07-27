@@ -116,6 +116,14 @@ echo " -------------------------------------------------------------------"
 sudo apt-get install awscli
 
 echo " -------------------------------------------------------------------"
+echo " ATUALIZAR AWS CLIENT"
+echo " -------------------------------------------------------------------"
+cd ~/Downloads
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "aws.zip"
+unzip aws.zip
+sudo ./aws/install --install-dir /usr/bin --update
+
+echo " -------------------------------------------------------------------"
 echo " DOCKER E DOCKER-COMPOSE"
 echo " -------------------------------------------------------------------"
 sudo apt-get install -y docker.io
